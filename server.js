@@ -1,11 +1,10 @@
-addEventListener("fetch", (event) => {
-  event.respondWith(
-    
-    let result = await nrql('show event types')
-//     let counts = tally(result.results[0].eventTypes)
-//     console.log(sort(counts))
+addEventListener("fetch", async (event) => {
+  let result = await nrql('show event types')
+  let counts = tally(result.results[0].eventTypes)
+  console.log(sort(counts))
   
-    new Response("Hello Ward and Jeff", {
+  event.respondWith(
+        new Response("Hello Ward and Jeff", {
       status: 200,
       headers: {
         "content-type": "text/plain",
