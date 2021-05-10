@@ -4,7 +4,7 @@ addEventListener("fetch", async (event) => {
   console.log(sort(counts))
   
   event.respondWith(
-    new Response(format(counts), {
+    new Response(format(sort(counts)), {
       status: 200,
       headers: {
         "content-type": "text/html",
