@@ -4,14 +4,18 @@ addEventListener("fetch", async (event) => {
   console.log(sort(counts))
   
   event.respondWith(
-        new Response("Hello Ward and Jeff", {
+    new Response(format(counts), {
       status: 200,
       headers: {
-        "content-type": "text/plain",
+        "content-type": "text/html",
       },
     }),
   );
 });
+
+function format(counts) {
+  return counts.map(count => `<ul>${count[0]}</ul>`).join(`\n`)
+}
 
 // fetch and analyze event types
 // usage: ACCT_1_INSIGHTS_QUERY_KEY='...' deno run --allow-env --allow.net fetch.js
