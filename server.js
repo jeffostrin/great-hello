@@ -4,14 +4,25 @@ addEventListener("fetch", async (event) => {
   console.log(sort(counts))
   let { pathname, search, origin } = new URL(event.request.url)
   
-  event.respondWith(
-    new Response(pathname + " " + search + " " +  format(sort(counts)), {
-      status: 200,
-      headers: {
-        "content-type": "text/html",
-      },
-    }),
-  );
+  if (pathname == `/` && search == ``) {
+    event.respondWith(
+      new Response(pathname + " " + search + " " +  format(sort(counts)), {
+        status: 200,
+        headers: {
+          "content-type": "text/html",
+        },
+      }),
+    );
+  } else {
+    event.respondWith(
+      new Response(`do not know how to handle ${event.request.url}`, {
+        status: 200,
+        headers: {
+          "content-type": "text/html",
+        },
+      }),
+    );
+  }  
 });
 
 function format(counts) {
