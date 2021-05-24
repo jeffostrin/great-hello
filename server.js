@@ -13,6 +13,16 @@ addEventListener("fetch", async (event) => {
         },
       }),
     );
+  } else if (pathname == `/` && search.startsWith(`?search=`)) {
+    let args = search.split('=')[1];
+    event.respondWith(
+      new Response(`searching for ${args}`, {
+        status: 200,
+        headers: {
+          "content-type": "text/html",
+        },
+      }),
+    );
   } else {
     event.respondWith(
       new Response(`do not know how to handle ${event.request.url}`, {
