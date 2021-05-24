@@ -2,9 +2,10 @@ addEventListener("fetch", async (request) => {
   let result = await nrql('show event types')
   let counts = tally(result.results[0].eventTypes)
   console.log(sort(counts))
+  let { pathname, search, origin } = new URL(request.url)
   
   request.respondWith(
-    new Response(request.url + " " +  format(sort(counts)), {
+    new Response(pathname + " " + search + " " +  format(sort(counts)), {
       status: 200,
       headers: {
         "content-type": "text/html",
