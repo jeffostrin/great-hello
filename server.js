@@ -16,7 +16,7 @@ addEventListener("fetch", async (event) => {
   } else if (pathname == `/` && search.startsWith(`?search=`)) {
     let arg = search.split('=')[1];
     event.respondWith(
-      new Response(`searching for ${search(eventTypes, arg)}`, {
+      new Response(`searching for ${searchx(eventTypes, arg)}`, {
         status: 200,
         headers: {
           "content-type": "text/html",
@@ -69,7 +69,7 @@ function sort(counts) {
   let array = Object.entries(counts)
   return array.sort((a,b) => b[1]-a[1])
 }
-function search(eventTypes, arg) {
+function searchx(eventTypes, arg) {
   let found = eventTypes.filter((eventType) => eventType.includes(arg))
   return found
 }
