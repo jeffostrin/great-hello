@@ -14,7 +14,7 @@ addEventListener("fetch", async (event) => {
 });
 
 function format(counts) {
-  return counts.map(count => `<ul>${count[0]}</ul>`).join(`\n`)
+  return `<ul>` + counts.map(count => `<li>${count[0]}</li>`).join(`\n`) + `</ul>`
 }
 
 // fetch and analyze event types
