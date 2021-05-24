@@ -69,7 +69,7 @@ function sort(counts) {
   let array = Object.entries(counts)
   return array.sort((a,b) => b[1]-a[1])
 }
-function search(eventTypes, arg) [
+function search(eventTypes, arg) {
   let found = eventTypes.filter((eventType) => eventType.includes(arg))
   return found
 }
