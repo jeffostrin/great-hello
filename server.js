@@ -1,10 +1,10 @@
 addEventListener("fetch", async (event) => {
-  let result = await nrql('show event types')
-  let counts = tally(result.results[0].eventTypes)
-  console.log(sort(counts))
+  let eventTypes = (await nrql('show event types')).results[0].eventTypes
   let { pathname, search, origin } = new URL(event.request.url)
   
   if (pathname == `/` && search == ``) {
+    let counts = tally(eventTypes)
+    console.log(sort(counts))
     event.respondWith(
       new Response(pathname + " " + search + " " +  format(sort(counts)), {
         status: 200,
