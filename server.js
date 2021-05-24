@@ -16,7 +16,7 @@ addEventListener("fetch", async (event) => {
   } else if (pathname == `/` && search.startsWith(`?search=`)) {
     let arg = search.split('=')[1];
     event.respondWith(
-      new Response(`searching for ${searchx(eventTypes, arg)}`, {
+      new Response(`searching for ${searchx(eventTypes, arg).join('<br>')}`, {
         status: 200,
         headers: {
           "content-type": "text/html",
