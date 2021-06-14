@@ -7,7 +7,7 @@ addEventListener("fetch", async (event) => {
     let sortedWords = sort(counts)
     console.log(sortedWords)
     event.respondWith(
-      new Response(pathname + " " + search + " " +  format(sortedWords, ['foo', 'bar']), {
+      new Response(pathname + " " + search + " " +  format(sortedWords, []), {
         status: 200,
         headers: {
           "content-type": "text/html",
@@ -21,7 +21,7 @@ addEventListener("fetch", async (event) => {
     let arg = search.split('=')[1];
     let searchresult = searchx(eventTypes, arg)
     event.respondWith(
-      new Response(format([], searchresult), {
+      new Response(format(sortedWords, searchresult), {
         status: 200,
         headers: {
           "content-type": "text/html",
