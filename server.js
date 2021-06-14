@@ -39,10 +39,12 @@ addEventListener("fetch", async (event) => {
 function format(words, eventtypes) {
   return `<table>
           <tr>
-            <ul> ${ words.map(word => `<li>${word[0]}</li>`).join(`\n`) } </ul>
-          </tr>
-          <tr>
-            <ul> ${ eventtypes.map(eventtype => `<li>${eventtype}</li>`).join(`\n`) } </ul>
+            <td id=words>
+              <ul> ${ words.map(word => `<li>${word[0]}</li>`).join(`\n`) } </ul>
+            </td>
+            <td id=eventtypes>
+              <ul> ${ eventtypes.map(eventtype => `<li>${eventtype}</li>`).join(`\n`) } </ul>
+            </td>
           </tr>
           </table>`;
 }
