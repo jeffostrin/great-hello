@@ -15,9 +15,13 @@ addEventListener("fetch", async (event) => {
       }),
     );
   } else if (pathname == `/` && search.startsWith(`?search=`)) {
+    let counts = tally(eventTypes)
+    let sortedWords = sort(counts)
+    console.log(sortedWords)
     let arg = search.split('=')[1];
+    let searchresult = searchx(eventTypes, arg)
     event.respondWith(
-      new Response(`searching for ${searchx(eventTypes, arg).join('<br>')}`, {
+      new Response(`searching for ${searchresult.join('<br>')}`, {
         status: 200,
         headers: {
           "content-type": "text/html",
