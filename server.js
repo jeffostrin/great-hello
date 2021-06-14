@@ -39,7 +39,7 @@ addEventListener("fetch", async (event) => {
 function format(words, eventtypes) {
   return `<table>` +
          `<tr>` + 
-           `<ul>` + words.map(count => `<li>${word[0]}</li>`).join(`\n`) + `</ul>` +
+           `<ul>` + words.map(word => `<li>${word[0]}</li>`).join(`\n`) + `</ul>` +
          `</tr>` +
          `<tr>` +
          `</tr>` +
