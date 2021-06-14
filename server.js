@@ -7,7 +7,7 @@ addEventListener("fetch", async (event) => {
     let sortedWords = sort(counts)
     console.log(sortedWords)
     event.respondWith(
-      new Response(pathname + " " + search + " " +  format(sortedWords, []), {
+      new Response(pathname + " " + search + " " +  format(sortedWords, ['foo', 'bar']), {
         status: 200,
         headers: {
           "content-type": "text/html",
@@ -42,6 +42,7 @@ function format(words, eventtypes) {
             <ul> ${ words.map(word => `<li>${word[0]}</li>`).join(`\n`) } </ul>
           </tr>
           <tr>
+            <ul> ${ eventtypes.map(eventtype => `<li>${eventtype}</li>`).join(`\n`) } </ul>
           </tr>
           </table>`;
 }
