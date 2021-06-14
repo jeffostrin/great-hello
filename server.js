@@ -4,9 +4,10 @@ addEventListener("fetch", async (event) => {
   
   if (pathname == `/` && search == ``) {
     let counts = tally(eventTypes)
-    console.log(sort(counts))
+    let sortedWords = sort(counts)
+    console.log(sortedWords)
     event.respondWith(
-      new Response(pathname + " " + search + " " +  format(sort(counts)), {
+      new Response(pathname + " " + search + " " +  format(sortedWords, []), {
         status: 200,
         headers: {
           "content-type": "text/html",
@@ -35,8 +36,14 @@ addEventListener("fetch", async (event) => {
   }  
 });
 
-function format(counts) {
-  return `<ul>` + counts.map(count => `<li>${count[0]}</li>`).join(`\n`) + `</ul>`
+function format(words, eventtypes) {
+  return `<table>` +
+         `<tr>` + 
+           `<ul>` + words.map(count => `<li>${word[0]}</li>`).join(`\n`) + `</ul>` +
+         `</tr>` +
+         `<tr>` +
+         `</tr>` +
+         `</table>`;
 }
 
 // fetch and analyze event types
