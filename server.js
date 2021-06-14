@@ -44,7 +44,7 @@ function format(words, eventtypes) {
   return `<table>
           <tr>
             <td valign="top" id=words>
-              <ul> ${ words.map(word => `<li>${word[0]}</li>`).join(`\n`) } </ul>
+              <ul> ${ words.map(word => `<li><a href="https://great-hello.deno.dev/?search=${word[0]}">${word[0]}</a></li>`).join(`\n`) } </ul>
             </td>
             <td valign="top" id=eventtypes>
               <ul> ${ eventtypes.map(eventtype => `<li>${eventtype}</li>`).join(`\n`) } </ul>
