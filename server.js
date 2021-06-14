@@ -21,7 +21,7 @@ addEventListener("fetch", async (event) => {
     let arg = search.split('=')[1];
     let searchresult = searchx(eventTypes, arg)
     event.respondWith(
-      new Response(`searching for ${searchresult.join('<br>')}`, {
+      new Response(format([], searchresult), {
         status: 200,
         headers: {
           "content-type": "text/html",
